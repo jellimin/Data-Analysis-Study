@@ -424,7 +424,7 @@ print(a)
 # 위에서 대괄호로 얻는 방법
 a = {'name':'jelly', 'phone':'012-345-789', 'birth':'1231'}
 # print(a['grade']) # 대괄호 사용 시 error
-print(a.get('grade')) # get 사용 시 none
+# print(a.get('grade')) # get 사용 시 none
 # 이를 활용하여 아래와 같이 사용할 수 있음
 print(a.get('grade', '없음')) # grade가 없으면 없음을 출력
 
