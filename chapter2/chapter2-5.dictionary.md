@@ -112,7 +112,7 @@ key, value 쌍을 얻기 위해서는 `딕셔너리명.items()`을 이용하여 
 
 ### **4. key, value 쌍 모두 지우기**
 ```
->>> dic = ['apple':'사과', 'strawberry':'딸기']
+>>> dic = {'apple':'사과', 'strawberry':'딸기'}
 >>> dic.clear()
 >>> print(dic)
 {}
@@ -123,7 +123,7 @@ key, value 쌍을 얻기 위해서는 `딕셔너리명.items()`을 이용하여 
 key로 value를 얻는 방법은 2가지가 있다. 
 * 대괄호 [] 이용
 ``` 
->>> dic = ['apple':'사과', 'strawberry':'딸기']
+>>> dic = {'apple':'사과', 'strawberry':'딸기'}
 >>> print(dic['apple'])
 사과
 
@@ -137,7 +137,7 @@ KeyError: 'pear'
 
 * get 함수 이용
 ``` 
->>> dic = ['apple':'사과', 'strawberry':'딸기']
+>>> dic = {'apple':'사과', 'strawberry':'딸기'}
 >>> print(dic.get('apple'))
 사과
 
@@ -151,11 +151,11 @@ None
 
 ### **6. 해당 key가 딕셔너리 안에 있는지 조사하기**
 ```
->>> dic = ['apple':'사과', 'strawberry':'딸기']
+>>> dic = {'apple':'사과', 'strawberry':'딸기'}
 >>> print('apple' in dic)
 True
 
->>> dic = ['apple':'사과', 'strawberry':'딸기']
+>>> dic = {'apple':'사과', 'strawberry':'딸기'}
 >>> print('pear' in dic)
 False
 ```
