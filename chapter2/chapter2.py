@@ -152,9 +152,38 @@ print(a)
 a = "I ate {number} apples. so I was sick for {day} days." .format(number = 10, day = 3) # 인덱스 대신 이름으로 넣기
 print(a)
 
+# 왼쪽 정렬 
+a = "{0:<10} hihi" .format("haha") # 포맷함수를 이용한 부분의 문자열 자릿수만 10자리
+print(a)
+
+# 오른쪽 정렬
+a = "my name is {0:>15}" .format("minyoung")
+print(a)
+
+# 가운데 정렬
+a = "{0:^10}" .format("hi")
+print(a)
+
+# 공백 채우기 (정렬문자인 >, <, !의 앞부분에 공백 채울 문자 넣기)
+a = "{0:=^20}" .format("study")
+print(a)
+
+# 소수점 표현하기
+y = 3.141592
+print("{0:0.2f}" .format(y))
+
+# { 또는 }을 문자 그대로 표현하기
+a = "{{and}}" .format()
+print(a)
+
 # f 문자열 포매팅 (뒤에 format 함수없이 문자열 앞에 f만 붙이면 됨)
 name = "int"
 a = f"나의 이름은 {name}입니다"
+print(a)
+
+# 나혼자코딩
+a = "{0:!^12}" .format("python") # 포맷팅 함수 사용
+a = f'{"python":!^12}'
 print(a)
 
 # 문자열 관련 함수
@@ -174,7 +203,7 @@ print(a.index("b"))
 # 4. 문자열 삽입
 a = ",".join("hihi") 
 print(a)
-a = ",".join(["a","b","c"]) # 리스트일땐 문자열 기준으로 하나의 스트링으로 만들어줌
+a = ",".join(["a","b","c"]) # 리스트일땐 문자열 기준으로 하나의 스트링으로 만들어줌, 대신 안에 있는 원소가 문자열인 경우 가능
 print(a)
 
 # 5. 소문자를 대문자로
