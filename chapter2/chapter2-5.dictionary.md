@@ -12,7 +12,10 @@ ___
 딕셔너리의 기본 모습은 아래와 같다.<br>
 `{key1:value1, key2:value2, ...}`<br>
 key와 value 쌍 여러개가 중괄호 {}로 둘러싸여 있으며, 각각의 요소는 key:value 형태로 이루어져있고, 쉼표로 구분된다. 예시는 아래와 같다.
+<<<<<<< HEAD
 
+=======
+>>>>>>> bf06ce46e5aa561f181cdcbda37a854802892ad3
 ```
 >>> dic = {'name':'jully', 'phone':'012-345-6789', 'age':'23'}
 >>> print(dic)
@@ -42,8 +45,8 @@ key와 value 쌍 여러개가 중괄호 {}로 둘러싸여 있으며, 각각의 
 
 ```
 >>> dic = {'name':'jully', 'phone':'012-345-6789', 'age':'23'}
->>> del a['phone']
->>> print(a)
+>>> del dic['phone']
+>>> print(dic)
 {'name':'jully', 'age':'23'}
 ```
 
@@ -134,7 +137,7 @@ key, value 쌍을 얻기 위해서는 `딕셔너리명.items()`을 이용하여 
 ### **4. key, value 쌍 모두 지우기**
 
 ```
->>> dic = ['apple':'사과', 'strawberry':'딸기']
+>>> dic = {'apple':'사과', 'strawberry':'딸기'}
 >>> dic.clear()
 >>> print(dic)
 {}
@@ -147,7 +150,7 @@ key로 value를 얻는 방법은 2가지가 있다.
 * 대괄호 [] 이용
   
 ``` 
->>> dic = ['apple':'사과', 'strawberry':'딸기']
+>>> dic = {'apple':'사과', 'strawberry':'딸기'}
 >>> print(dic['apple'])
 사과
 
@@ -163,7 +166,7 @@ KeyError: 'pear'
 * get 함수 이용
   
 ``` 
->>> dic = ['apple':'사과', 'strawberry':'딸기']
+>>> dic = {'apple':'사과', 'strawberry':'딸기'}
 >>> print(dic.get('apple'))
 사과
 
@@ -179,11 +182,11 @@ None
 ### **6. 해당 key가 딕셔너리 안에 있는지 조사하기**
 
 ```
->>> dic = ['apple':'사과', 'strawberry':'딸기']
+>>> dic = {'apple':'사과', 'strawberry':'딸기'}
 >>> print('apple' in dic)
 True
 
->>> dic = ['apple':'사과', 'strawberry':'딸기']
+>>> dic = {'apple':'사과', 'strawberry':'딸기'}
 >>> print('pear' in dic)
 False
 ```
