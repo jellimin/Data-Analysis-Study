@@ -15,7 +15,6 @@ key와 value 쌍 여러개가 중괄호 {}로 둘러싸여 있으며, 각각의 
 <<<<<<< HEAD
 
 =======
->>>>>>> bf06ce46e5aa561f181cdcbda37a854802892ad3
 ```
 >>> dic = {'name':'jully', 'phone':'012-345-6789', 'age':'23'}
 >>> print(dic)
