@@ -29,7 +29,7 @@ key와 value 쌍 여러개가 중괄호 {}로 둘러싸여 있으며, 각각의 
 
 ## **딕셔너리 쌍 추가하기**
 
-```
+```python
 >>> dic = {'name':'jully'}
 >>> dic['age'] = '23'
 >>> print(dic)
@@ -40,7 +40,7 @@ key와 value 쌍 여러개가 중괄호 {}로 둘러싸여 있으며, 각각의 
 
 ## **딕셔너리 쌍 삭제하기**
 
-```
+```python
 >>> dic = {'name':'jully', 'phone':'012-345-6789', 'age':'23'}
 >>> del dic['phone']
 >>> print(dic)
@@ -51,7 +51,7 @@ key와 value 쌍 여러개가 중괄호 {}로 둘러싸여 있으며, 각각의 
 
 ## **딕셔너리에서 key를 사용해 value 얻기**
 
-```
+```python
 >>> dic = {'name':'jully', 'phone':'012-345-6789', 'age':'23'}
 >>> print(dic['name'])
 jully
@@ -63,7 +63,7 @@ ___
 
 ### **1. keys 리스트 만들기** 
 
-```
+```python
 >>> grade = {'jully':90, 'kate':80, 'jessi':70}
 >>> print(grade.keys())
 dict_keys(['jully', 'kate', 'jessi'])
@@ -71,7 +71,7 @@ dict_keys(['jully', 'kate', 'jessi'])
 
 딕셔너리에서 key만 모으고 싶다면 `딕셔너리명.keys()`을 이용하여 dict_keys라는 객체를 얻을 수 있다. 결과를 보면 리스트와 유사하지만, 리스트 고유의 append, sort, pop, insert, remove 등을 사용할 수 없다. 그렇다면 이 dict_keys 객체를 어떻게 사용할 수 있을까?
 
-```
+```python
 >>> for k in grade.keys():
         print(k)
 jully
@@ -86,7 +86,7 @@ for문을 이용하여 key를 하나씩 출력하거나, dict_keys 객체를 리
 
 ### **2. values 리스트 만들기** 
 
-```
+```python
 >>> grade = {'jully':90, 'kate':80, 'jessi':70}
 >>> print(grade.values())
 dict_values([90, 80, 70])
@@ -94,7 +94,7 @@ dict_values([90, 80, 70])
 
 딕셔너리에서 value만 모으고 싶다면 `딕셔너리명.values()`를 이용하여 dict_values 객체를 얻을 수 있다. 
 
-```
+```python
 >>> for v in grade.values():
         print(v)
 90
@@ -109,7 +109,7 @@ dict_values([90, 80, 70])
 
 ### **3. key, value 쌍 얻기**
 
-```
+```python
 >>> grade = {'jully':90, 'kate':80, 'jessi':70}
 >>> print(grade.items())
 dict_items([('jully', 90), ('kate', 80), ('jessi', 70)])
@@ -117,7 +117,7 @@ dict_items([('jully', 90), ('kate', 80), ('jessi', 70)])
 
 key, value 쌍을 얻기 위해서는 `딕셔너리명.items()`을 이용하여 key와 value를 튜플로 묶은 값을 원소로 하는 dict_items 객체를 얻을 수 있다.
 
-```
+```python
 >>> for k, v in grade.items():
         print("키는 :" + k)
         print("값은 :" + v)
@@ -133,7 +133,7 @@ key, value 쌍을 얻기 위해서는 `딕셔너리명.items()`을 이용하여 
 
 ### **4. key, value 쌍 모두 지우기**
 
-```
+```python
 >>> dic = {'apple':'사과', 'strawberry':'딸기'}
 >>> dic.clear()
 >>> print(dic)
@@ -146,7 +146,7 @@ key, value 쌍을 얻기 위해서는 `딕셔너리명.items()`을 이용하여 
 key로 value를 얻는 방법은 2가지가 있다. 
 * 대괄호 [] 이용
   
-``` 
+``` python
 >>> dic = {'apple':'사과', 'strawberry':'딸기'}
 >>> print(dic['apple'])
 사과
@@ -162,7 +162,7 @@ KeyError: 'pear'
 
 * get 함수 이용
   
-``` 
+``` python
 >>> dic = {'apple':'사과', 'strawberry':'딸기'}
 >>> print(dic.get('apple'))
 사과
@@ -178,7 +178,7 @@ None
 
 ### **6. 해당 key가 딕셔너리 안에 있는지 조사하기**
 
-```
+```python
 >>> dic = {'apple':'사과', 'strawberry':'딸기'}
 >>> print('apple' in dic)
 True
