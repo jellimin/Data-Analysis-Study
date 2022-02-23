@@ -381,6 +381,8 @@ a = [1, 2, 3]
 a[4] # a 리스트에서 얻을 수 없는 값 (IndexError 발생)
 
 
+# 일단 전체적인 순서는 try -> except -> else -> finally
+
 # try, except문 사용
 # 기본 형태는 아래와 같다.
 # try:
@@ -463,7 +465,7 @@ except FileNotFoundError:
     pass
 
 
-# 오류를 일부러 발생시키기
+# 오류를 일부러 발생시키기 (raise 이용)
 # 프로그래머 입장에서 Bird를 쓰게 하고 싶은데 이걸 변형해서 쓰게 하도록 하고 싶을 때 !
 class Bird:
     def fly(self):
@@ -771,27 +773,144 @@ sys.exit()
 
 # 2. pickle
 # 객체의 형태를 그대로 유지하면서 파일에 저장하고 불러올 수 있게 하는 모듈
-# pickle 모듈의 dump 함수를 사용하여 딕셔너리 객체인 data를 그대로 파일에 저장해보자
+# (1) pickle 모듈의 dump 함수를 사용하여 딕셔너리 객체인 data를 그대로 파일에 저장해보자
 import pickle
 f = open("test.txt", "wb")
 data = {1: 'python', 2:'you need'}
 pickle.dump(data, f)
 f.close()
 
-# 3. time
-import time
-print(time.time()) # 1970년 1월 1일 0시 0분 0초를 기준으로 지난 시간 초
+# (2) pickle 모듈의 load 함수를 사용하여 원래 있던 딕셔너리 객체 상태 그대로 불러오기
+import pickle
+f = open("test.txt", "rb")
+data = pickle.load(f)
+print(data)
 
+
+# 3. OS
+# OS 모듈은 환경 변수나 디렉터리, 파일 등의 OS 자원을 제어할 수 있게 해주는 모듈
+
+# (1) 내 시스템의 환경 변수 값을 알고 싶을 때 - os.environ
+# 시스템은 제각기 다른 환경변수 값 가짐
+import os
+os.environ # 시스템 정보를 돌려주는데, 객체의 타입은 딕셔너리
+os.environ['PATH'] # 딕셔너리 타입이므로 다음과 같이 출력 가능, PATH 환경 변수의 내용
+
+# (2) 디렉터리 위치 변경하기 - os.chdir
+os.chdir("C:\WINDOWS") # 현재 디렉터리 위치 변경 가능
+
+# (3) 디렉터리 위치 돌려받기 - os.getcwd
+# 현재 자신의 디렉터리 위치 돌려줌
+os.getcwd()
+
+# (4) 시스템 명령어 호출하기 - os.system
+# 시스템 자체의 프로그램이나 기타 명령어를 파이썬에서 호출가능
+# os.system("명령어") 형태로 사용
+os.system("dir") # 현재 디렉터리에서 시스템 명령어 dir을 실행하는 예
+
+# (5) 실행한 시스템 명령어의 결괏값 돌려받기 - os.popen
+# 시스템 명렁어를 실행한 결괏값을 읽기 모드 형태의 파일 객체로 돌려줌
+f = os.popen("dir")
+print(f.read()) # 읽어들인 파일 객체의 내용을 보기 위함
+
+# 기타 유용한 os 관련함수
+# os.mkdir(디렉터리) : 디렉터리를 생성
+# os.rmdir(디렉터리) : 디렉터리를 삭제, 단 디렉터리가 비어있어야 삭제 가능
+# os.unlink(파일 이름) : 파일을 지움
+# os.rename(src, dst) : src라는 이름의 파일을 dst라는 이름으로 바꿈
+
+
+# 4. shutil
+# 파일을 복사해주는 파이썬 모듈
+# src라는 이름의 파일을 dst로 복사
+# 만약 dst가 디렉터리 이름이라면 해당 디렉터리에 src라는 이름으로 복사됨
+import shutil
+shutil.copy("src.txt", "dst.txt")
+
+
+# 5.glob
+# 특정 디렉터리에 있는 파일 이름을 모두 알고 싶으 ㄹ때
+# 디렉터리에 있는 파일들을 리스트로 만듦
+import glob
+glob.glob("C:/doit/mark*") # doit 디렉터리에 있는 파일 중 mark로 시작하는 파일을 모두 찾아 읽어들임
+
+
+# 6. tempfile
+# 파일을 임시로 만들어서 사용할 때 유용한 모듈
+
+# (1) tempfile.mkstemp() : 중복되지 않는 임시 파일의 이름을 무작위로 만들어 돌려줌
+import tempfile
+filename = tempfile.mkstemp()
+filename
+
+# (2) tempfile.TemporaryFile() : 임시 저장 공간으로 사용할 파일 객체를 돌려줌
+# 이 파일은 기본적으로 바이너리 쓰기 모드를 가짐
+import tempfile
+f = tempfile.TemporaryFile()
+f.close() # 생성한 임시 파일이 자동으로 삭제됨
+
+
+# 7. time
+
+# (1) time.time
+# 현재 시간을 실수 형태로 돌려주는 함수
+# 1970년 1월 1일 0시 0분 0초를 기준으로 지난 시간 초
+import time
+print(time.time()) 
+
+# (2) time.localtime
+# time.time()이 돌려준 실수 값을 사용해서 연도, 월, 일, 시, 분, 초의 형태로 바꿔주는 함수
+# 튜플 형태로 반환
+import time
+print(time.localtime(time.time()))
+
+# (3) time.asctime
+# time.localtime에 의해서 반환된 튜플 형태의 값을 인수로 받아서 날짜와 시간을 알아보기 쉬운 형태로 돌려주는 함수
+import time
+print(time.asctime(time.localtime(time.time())))
+
+# (4) time.ctime
+# time.asctime(time.localtime(time.time()))을 time.ctime()을 사용해 간편하게 표시
+# time.asctime과는 다르게 현재 시간만을 돌려줌
+import time
+print(time.ctime())
+
+# (5) time.strftime
+# 시간에 관계된 것을 세밀하게 표현하는 여러 가지 포맷 코드를 제공
+# time.strftime('출력할 형식 포맷 코드', time.localtime(time.time()))
+import time
+time.strftime("%x", time.localtime(time.time())) # %x는 현재 설정된 지역에 기반한 날짜 출력
+time.strftime("%c", time.localtime(time.time())) # %c는 날짜와 시간을 출력
+ 
+# (6) time.sleep
+# 주로 루프 안에서 많이 사용
+# 이 함수를 사용하면 일정한 시간 간격을 두고 루프 실행 가능
 import time
 for i in range(5):
     print(i)
     time.sleep(1) # 1초씩 쉬면서 출력해라
 
-# 4. random
+
+# 8. calendar
+# 파이썬에서 달력을 볼 수 있게 해주는 모듈
+import calendar
+print(calendar.calendar(2022)) # 연도를 사용하면 그 해 전체의 달력을 볼 수 있음
+print(calendar.prcal(2022)) # 위와 같은 결괏값 얻을 수 있음
+print(calendar.prmonth(2022, 10)) # 해당 년도, 달의 달력을 얻을 수 있음
+print(calendar.weekday(2022, 10, 2)) # 그 날짜에 해당하는 요일정보 (0 : 월요일, 1 : 화요일, ...)
+print(calendar.monthrange(2022, 10)) # 입력받은 달의 1일의 요일, 그 달이 며칠까지 있는지를 튜플 형태로 돌려줌
+
+
+# 9. random
 # 난수를 발생시키는 모듈
 import random
 random.random() # 0에서 1 사이의 실수 중 난수 값을 돌려줌
 random.randint(1, 10) # 1에서 10 사이의 정수 중 난수 값 돌려줌
+random.sample(range(100), 2) # 0~99사이에서 2개 뽑아줌
+random.choice(range(100)) # 0~99사이에서 아무거나 뽑아줌
+a = [1, 2, 3, 4, 5]
+random.shuffle(a) # 순서를 무작위로 바꾸어줌
+print(a)
 
 # random 모듈을 사용한 응용
 # random_pop 함수는 리스트의 요소 중 무작위로 하나를 선택하여 꺼낸 다음 그 값을 돌려줌
