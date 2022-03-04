@@ -28,8 +28,8 @@ for line in data.split("\n"):
     total.append(" ".join(result))
 
 print("\n".join(total))
->>> park 800905-1049118
->>> kim 70905-1059119
+>>> park 800905-*******
+>>> kim 70905-*******
 ```
 
 * 정규표현식을 사용한다면 ?
