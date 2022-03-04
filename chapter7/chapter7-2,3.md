@@ -258,6 +258,7 @@ print(m)
 ```
 
 2. IGNORECASE
+
 IGNORECASE는 대, 소문자 구별없이 매치를 수행할 때 사용하는 옵션이다.
 
 ```python
