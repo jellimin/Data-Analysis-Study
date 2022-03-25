@@ -27,7 +27,7 @@ print(bin_dividers)
 # 범주형 데이터로 변환 pd.cut()
 df['hp_bin'] = pd.cut(x = df['horsepower'], # 데이터 배열
                       bins = bin_dividers, # 경계값 리스트
-                      labels = bin_names, # bin 이름
+                      labels = ['저출력', '보통출력', ''], # bin 이름
                       include_lowest = True) # 각 구간의 낮은 경계값 포함 여부
 print(df[['horsepower', 'hp_bin']].head(15))
 >>>     horsepower hp_bin
